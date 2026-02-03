@@ -1,6 +1,8 @@
+/* globals document -- Browser */
 /* eslint-disable no-bitwise -- used for calculations */
 /* eslint-disable unicorn/prefer-query-selector -- aiming at
   backward-compatibility */
+/* eslint-disable sonarjs/no-nested-assignment -- Convenient */
 /**
 * StackBlur - a fast almost Gaussian Blur For Canvas
 *
@@ -15,8 +17,7 @@
 * @author Mario Klingemann
 * Contact: mario@quasimondo.com
 * Website: {@link http://www.quasimondo.com/StackBlurForCanvas/StackBlurDemo.html}
-* Twitter: @quasimondo
-*
+* Twitter: `@quasimondo`
 * @copyright (c) 2010 Mario Klingemann
 *
 * Permission is hereby granted, free of charge, to any person
@@ -132,7 +133,9 @@ function processImage (
   context.clearRect(0, 0, w, h);
   context.drawImage(img, 0, 0, img.naturalWidth, img.naturalHeight, 0, 0, w, h);
 
-  if (isNaN(radius) || radius < 1) { return; }
+  if (isNaN(radius) || radius < 1) {
+    return;
+  }
 
   if (blurAlphaChannel) {
     processCanvasRGBA(canvas, 0, 0, w, h, radius);
@@ -180,7 +183,9 @@ function getImageDataFromCanvas (canvas, topX, topY, width, height) {
  * @returns {undefined}
  */
 function processCanvasRGBA (canvas, topX, topY, width, height, radius) {
-  if (isNaN(radius) || radius < 1) { return; }
+  if (isNaN(radius) || radius < 1) {
+    return;
+  }
   radius |= 0;
 
   let imageData = getImageDataFromCanvas(canvas, topX, topY, width, height);
@@ -204,7 +209,7 @@ function processCanvasRGBA (canvas, topX, topY, width, height, radius) {
 function processImageDataRGBA (imageData, topX, topY, width, height, radius) {
   const pixels = imageData.data;
 
-  const div = 2 * radius + 1;
+  const div = (2 * radius) + 1;
   // const w4 = width << 2;
   const widthMinus1 = width - 1;
   const heightMinus1 = height - 1;
@@ -257,7 +262,7 @@ function processImageDataRGBA (imageData, topX, topY, width, height, radius) {
       aSum = sumFactor * pa;
 
     for (let i = 1; i < radiusPlus1; i++) {
-      const p = yi + ((widthMinus1 < i ? widthMinus1 : i) << 2);
+      const p = yi + ((Math.min(widthMinus1, i)) << 2);
 
       const r = pixels[p],
         g = pixels[p + 1],
@@ -303,9 +308,7 @@ function processImageDataRGBA (imageData, topX, topY, width, height, radius) {
       aOutSum -= stackIn.a;
 
       let p = x + radius + 1;
-      p = (yw + (p < widthMinus1
-        ? p
-        : widthMinus1)) << 2;
+      p = (yw + (Math.min(p, widthMinus1))) << 2;
 
       rInSum += (stackIn.r = pixels[p]);
       gInSum += (stackIn.g = pixels[p + 1]);
@@ -453,7 +456,9 @@ function processImageDataRGBA (imageData, topX, topY, width, height, radius) {
  * @returns {undefined}
  */
 function processCanvasRGB (canvas, topX, topY, width, height, radius) {
-  if (isNaN(radius) || radius < 1) { return; }
+  if (isNaN(radius) || radius < 1) {
+    return;
+  }
   radius |= 0;
 
   let imageData = getImageDataFromCanvas(canvas, topX, topY, width, height);
@@ -476,7 +481,7 @@ function processCanvasRGB (canvas, topX, topY, width, height, radius) {
 function processImageDataRGB (imageData, topX, topY, width, height, radius) {
   const pixels = imageData.data;
 
-  const div = 2 * radius + 1;
+  const div = (2 * radius) + 1;
   // const w4 = width << 2;
   const widthMinus1 = width - 1;
   const heightMinus1 = height - 1;
@@ -524,7 +529,7 @@ function processImageDataRGB (imageData, topX, topY, width, height, radius) {
 
     let rInSum = 0, gInSum = 0, bInSum = 0;
     for (let i = 1; i < radiusPlus1; i++) {
-      p = yi + ((widthMinus1 < i ? widthMinus1 : i) << 2);
+      p = yi + ((Math.min(widthMinus1, i)) << 2);
       rSum += (stack.r = (pr = pixels[p])) * (rbs = radiusPlus1 - i);
       gSum += (stack.g = (pg = pixels[p + 1])) * rbs;
       bSum += (stack.b = (pb = pixels[p + 2])) * rbs;
@@ -673,6 +678,7 @@ export class BlurStack {
    * Set properties.
    */
   constructor () {
+    // eslint-disable-next-line unicorn/prefer-class-fields -- Backwards-compat
     this.r = 0;
     this.g = 0;
     this.b = 0;

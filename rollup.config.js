@@ -1,17 +1,17 @@
-import babel from '@rollup/plugin-babel';
-import {terser} from 'rollup-plugin-terser';
+import {babel} from '@rollup/plugin-babel';
+import terser from '@rollup/plugin-terser';
 
 /**
  * @external RollupConfig
- * @type {PlainObject}
+ * @type {object}
  * @see {@link https://rollupjs.org/guide/en#big-list-of-options}
  */
 
 /**
- * @param {PlainObject} [config={}]
+ * @param {object} [config]
  * @param {boolean} [config.minifying]
- * @param {string} [config.format="umd"]
- * @returns {external:RollupConfig}
+ * @param {string} [config.format]
+ * @returns {object}
  */
 function getRollupObject ({minifying, format = 'umd'} = {}) {
   const nonMinified = {
@@ -19,9 +19,9 @@ function getRollupObject ({minifying, format = 'umd'} = {}) {
     output: {
       format,
       sourcemap: minifying,
-      file: `dist/stackblur${format === 'es'
-        ? '-' + format
-        : ''}${minifying ? '.min' : ''}.js`,
+      file: `dist/stackblur${minifying ? '.min' : ''}.${
+        format === 'es' ? 'm' : ''
+      }js`,
       name: 'StackBlur'
     },
     plugins: [
@@ -36,7 +36,6 @@ function getRollupObject ({minifying, format = 'umd'} = {}) {
   return nonMinified;
 }
 
-// eslint-disable-next-line import/no-anonymous-default-export -- Rollup config
 export default [
   getRollupObject({minifying: false, format: 'umd'}),
   getRollupObject({minifying: false, format: 'es'}),

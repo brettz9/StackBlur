@@ -81,12 +81,12 @@ StackBlur.image(sourceImage, targetCanvas, radius, blurAlphaChannel);
 **RGBA Canvas as source:**
 
 ```js
-StackBlur.canvasRGBA(targetCanvas, top_x, top_y, width, height, radius);
+StackBlur.canvasRGBA(targetCanvas, topX, topY, width, height, radius);
 ```
 
   * `targetCanvas`: the `HTMLCanvasElement`.
-  * `top_x`: the horizontal coordinate of the top-left corner of the rectangle to blur.
-  * `top_y`: the vertical coordinate of the top-left corner of the rectangle to blur.
+  * `topX`: the horizontal coordinate of the top-left corner of the rectangle to blur.
+  * `topY`: the vertical coordinate of the top-left corner of the rectangle to blur.
   * `width`: the width of the rectangle to blur.
   * `height`: the height of the rectangle to blur.
   * `radius`: the radius of the blur.
@@ -94,12 +94,12 @@ StackBlur.canvasRGBA(targetCanvas, top_x, top_y, width, height, radius);
 **RGB Canvas as source:**
 
 ```js
-StackBlur.canvasRGB(targetCanvas, top_x, top_y, width, height, radius);
+StackBlur.canvasRGB(targetCanvas, topX, topY, width, height, radius);
 ```
 
   * `targetCanvas`: the `HTMLCanvasElement`.
-  * `top_x`: the horizontal coordinate of the top-left corner of the rectangle to blur.
-  * `top_y`: the vertical coordinate of the top-left corner of the rectangle to blur.
+  * `topX`: the horizontal coordinate of the top-left corner of the rectangle to blur.
+  * `topY`: the vertical coordinate of the top-left corner of the rectangle to blur.
   * `width`: the width of the rectangle to blur.
   * `height`: the height of the rectangle to blur.
   * `radius`: the radius of the blur.
@@ -107,12 +107,12 @@ StackBlur.canvasRGB(targetCanvas, top_x, top_y, width, height, radius);
 **RGBA ImageData as source:**
 
 ```js
-StackBlur.imageDataRGBA(imageData, top_x, top_y, width, height, radius);
+StackBlur.imageDataRGBA(imageData, topX, topY, width, height, radius);
 ```
 
   * `imageData`: the canvas' `ImageData`.
-  * `top_x`: the horizontal coordinate of the top-left corner of the rectangle to blur.
-  * `top_y`: the vertical coordinate of the top-left corner of the rectangle to blur.
+  * `topX`: the horizontal coordinate of the top-left corner of the rectangle to blur.
+  * `topY`: the vertical coordinate of the top-left corner of the rectangle to blur.
   * `width`: the width of the rectangle to blur.
   * `height`: the height of the rectangle to blur.
   * `radius`: the radius of the blur.
@@ -120,12 +120,12 @@ StackBlur.imageDataRGBA(imageData, top_x, top_y, width, height, radius);
 **RGB ImageData as source:**
 
 ```js
-StackBlur.imageDataRGB(imageData, top_x, top_y, width, height, radius);
+StackBlur.imageDataRGB(imageData, topX, topY, width, height, radius);
 ```
 
   * `imageData`: the canvas' `ImageData`.
-  * `top_x`: the horizontal coordinate of the top-left corner of the rectangle to blur.
-  * `top_y`: the vertical coordinate of the top-left corner of the rectangle to blur.
+  * `topX`: the horizontal coordinate of the top-left corner of the rectangle to blur.
+  * `topY`: the vertical coordinate of the top-left corner of the rectangle to blur.
   * `width`: the width of the rectangle to blur.
   * `height`: the height of the rectangle to blur.
   * `radius`: the radius of the blur.

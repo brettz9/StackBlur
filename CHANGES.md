@@ -1,5 +1,9 @@
 # StackBlur CHANGES
 
+## 3.0.0
+
+- feat: switch to native ESM with `exports`
+
 ## 2.7.0
 
 - fix: use unsigned right shift to fix blur radius larger than 180 #59 (@kayahr)
