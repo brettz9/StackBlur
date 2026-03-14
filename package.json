@@ -1,18 +1,26 @@
 {
   "name": "stackblur-canvas",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Fast and almost Gaussian blur by Mario Klingemann",
   "main": "dist/stackblur.js",
   "type": "module",
+  "types": "./index.d.ts",
   "exports": {
-    "import": "./dist/stackblur.mjs",
-    "require": "./dist/stackblur.js"
+    "import": {
+      "types": "./index.d.ts",
+      "default": "./dist/stackblur.mjs"
+    },
+    "require": {
+      "types": "./index.d.cts",
+      "default": "./dist/stackblur.js"
+    }
   },
   "browserslist": {
     "target": "cover 100%"
   },
   "scripts": {
-    "prepublishOnly": "pnpm i",
+    "prepublishOnly": "npm run attw && pnpm i",
+    "attw": "attw --pack .",
     "start": "open-cli http://localhost:8081/demo/ && http-server -p 8081",
     "eslint": "eslint --ext=js,cjs,md,html .",
     "lint": "npm run eslint --",
@@ -44,12 +52,13 @@
     "node": ">=0.1.16"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.2",
     "@babel/core": "^7.29.0",
     "@babel/preset-env": "^7.29.0",
-    "@rollup/plugin-babel": "^6.1.0",
-    "@rollup/plugin-terser": "^0.4.4",
-    "eslint": "^9.39.2",
-    "eslint-config-ash-nazg": "39.11.0",
+    "@rollup/plugin-babel": "^7.0.0",
+    "@rollup/plugin-terser": "^1.0.0",
+    "eslint": "^9.39.4",
+    "eslint-config-ash-nazg": "39.11.1",
     "eslint-config-standard": "^17.1.0",
     "http-server": "^14.1.1",
     "jsdoc": "^3.6.5",

@@ -1,5 +1,9 @@
 # StackBlur CHANGES
 
+## 3.0.1
+
+- fix: types
+
 ## 3.0.0
 
 - feat: switch to native ESM with `exports`
